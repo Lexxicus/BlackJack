@@ -11,13 +11,8 @@ module Action
     end
 
     def add_card(deck)
-      cards_on_hand << card(deck)
-    end
-
-    def scoring
-      cards_on_hand.each do |card|
-        @points += card[:points]
-      end
+      @cards_on_hand << card(deck)
+      @points += cards_on_hand[-1][:points]
     end
   end
 end

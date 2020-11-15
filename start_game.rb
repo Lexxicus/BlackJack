@@ -1,9 +1,10 @@
-require_relative 'action.rb'
-require_relative 'player.rb'
-require_relative 'card_deck.rb'
+require_relative 'modules/validation.rb'
+require_relative 'modules/action.rb'
+require_relative 'models/interface.rb'
+require_relative 'models/dealer.rb'
+require_relative 'models/player.rb'
+require_relative 'models/card_deck.rb'
 
-deck = CardDeck.new
-player = Player.new('Lexx')
-a_d = deck.bj_deck
-player.add_card(a_d)
-player.add_card(a_d)
+ui = Interface.new
+ui.start
+
