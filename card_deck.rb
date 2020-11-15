@@ -1,5 +1,4 @@
 class CardDeck
-  
   attr_accessor :bj_deck
   def initialize
     @bj_deck = [
