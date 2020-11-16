@@ -11,6 +11,7 @@ module Action
     end
 
     def add_card(deck)
+      card(deck)[:points] = 1 if card(deck)[:points][0] == 'A' && @points > 11
       @cards_on_hand << card(deck)
       @points += cards_on_hand[-1][:points]
     end
