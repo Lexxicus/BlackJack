@@ -1,14 +1,19 @@
 # init
 class Game
-  def initialize(player, dealer)
-    @player = player
-    @dealer = dealer
+  include Ask
+  def initialize
+    @player = Player.new(ask)
+    @dealer = Dealer.new
     @deck = Deck.new
   end
 
   def start_game
     2.times { @player.hand.add(@deck.issue_card) }
     2.times { @dealer.hand.add(@deck.issue_card) }
+  end
+
+  def player_name
+    @player.name
   end
 
   def dealer_turn
@@ -29,19 +34,18 @@ class Game
     winner
   end
 
-  def player_cards
-    @player.hand.cards
+  def player_stats
+    @player.hand
   end
 
-  def dealer_cards
-    @dealer.hand.cards
+  def dealer_stats
+    @dealer.hand
   end
 
   def play_again
     @deck = Deck.new
     @player.hand.reset
     @dealer.hand.reset
-    start_game
   end
 
   def player_win?

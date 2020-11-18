@@ -7,7 +7,7 @@ class Hand < Player
   end
 
   def add(card)
-    card.points = 1 if @points < 11 && card.points == 11
+    card.points = 1 if @cards.size == 2 && @points < 11 && card.points == 11
     score(card)
     @cards << card
   end
