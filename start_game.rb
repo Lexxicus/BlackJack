@@ -1,10 +1,8 @@
-require_relative 'modules/winner.rb'
 require_relative 'modules/validation.rb'
-require_relative 'modules/action.rb'
 require_relative 'models/interface.rb'
-require_relative 'models/dealer.rb'
-require_relative 'models/player.rb'
-require_relative 'models/card_deck.rb'
-
-ui = Interface.new
-ui.start
+require_relative 'models/game.rb'
+require_relative 'models/players/player.rb'
+require_relative 'models/players/dealer.rb'
+require_relative 'models/players/hand.rb'
+require_relative 'models/card_deck/card.rb'
+require_relative 'models/card_deck/deck.rb'

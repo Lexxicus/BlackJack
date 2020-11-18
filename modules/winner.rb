@@ -5,8 +5,8 @@ module Winner
   end
   module InstanceMethods
     def player_win?
-      one = @player.points > @dealer.points && @player.points <= 21
-      two = @player.points < @dealer.points && @dealer.points > 21
+      one = @player.hand.points > @dealer.hand.points && @player.hand.points <= 21
+      two = @player.hand.points < @dealer.hand.points && @dealer.hand.points > 21
       if one || two
         true
       else
@@ -15,8 +15,8 @@ module Winner
     end
 
     def dealer_win?
-      one = @dealer.points > @player.points && @dealer.points <= 21
-      two = @dealer.points < @player.points && @player.points > 21
+      one = @dealer.hand.points > @player.hand.points && @dealer.hand.points <= 21
+      two = @dealer.hand.points < @player.hand.points && @player.hand.points > 21
       if one || two
         true
       else
@@ -24,19 +24,16 @@ module Winner
       end
     end
 
-    def winer
+    def winner
       if player_win?
         @player.balance += @dealer.bet
         @dealer.balance -= @dealer.bet
-        puts "Поздравляем с победой, ваш баланс #{@player.balance}"
+        @player
       elsif dealer_win?
         @player.balance -= @dealer.bet
         @dealer.balance += @dealer.bet
-        puts "Вы проиграли, ваш баланс #{@player.balance}"
-      else
-        puts 'Ничья'
+        @dealer
       end
-      repeat
     end
   end
 end
